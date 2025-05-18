@@ -5,8 +5,16 @@ body{
 
 .cell{
     background-color: gray;
+    width: 40px;
+	height: 40px;
+	font-size: 1.5em;
 }
 
 .cell clicked{
     background-color: lightgrey;
+}
+
+table {
+	margin: 100px auto;
+	border: 1px solid lightgray;
 }
