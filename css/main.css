@@ -1,0 +1,12 @@
+body{
+    background-color: antiquewhite;
+    text-align: center;
+}
+
+.cell{
+    background-color: gray;
+}
+
+.cell clicked{
+    background-color: lightgrey;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mine Sweeper</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body >
+    <div>
+        <h1>Mine Sweeper</h1>
+        <hr>
+        <div class="game-info">
+            <p>Chose Your Level:</p>
+            <!--* Radio Inputs -->
+            <label>
+                <input type="radio" class="level super-easy" name="difficulty" onclick="onChangeDifficulty(2)" />
+                Super Easy 
+            </label>
+            <label>
+                <input type="radio" class="level easy" name="difficulty" onclick="onChangeDifficulty(4)" />
+                Easy
+            </label>
+            <label>
+                <input type="radio" class="level normal" name="difficulty" onclick="onChangeDifficulty(6)" />
+                Normal
+            </label>
+            <label>
+                <input type="radio" class="level hard" name="difficulty" onclick="onChangeDifficulty(8)" />
+                Hard!
+            </label>
+            <label>
+                <input type="radio" class="level extreme" name="difficulty" onclick="onChangeDifficulty(10)" />
+                Extreme!
+            </label>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <table>
+            <tbody class="board">
+            </tbody>
+        </table>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/function.js"></script>
+</body>
+</html>
