@@ -8,13 +8,19 @@ body{
     width: 40px;
 	height: 40px;
 	font-size: 1.5em;
+    border-color: black;
+    transition: 1s;
 }
 
-.cell clicked{
+.clicked{
     background-color: lightgrey;
 }
 
-table {
+.hide{
+    display: none;
+}
+
+table{
 	margin: 100px auto;
 	border: 1px solid lightgray;
 }

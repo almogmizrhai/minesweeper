@@ -1,5 +1,6 @@
 'use strict'
 
+var gBoardCell
 
 var gBoardCell = { 
     minesAroundCount: 4, 
@@ -9,8 +10,8 @@ var gBoardCell = {
 }
 
 var gLevel = { 
-    SIZE: 4, 
-    MINES: 2, 
+    SIZE: 0, 
+    MINES: 0, 
 }
 
 var gGame = { 
@@ -28,25 +29,64 @@ const HAPPY_FACE = '🥳'
 var gBoard
 
 function onInit(){ 
-    renderBoard()
+    if(gGame.isOn){
+        renderBoard()
+    }
 }
 
 function renderBoard(){
     var strHTML = ''
-    gBoard = generateMat()
+    gBoard = buildBoard()
     console.table(gBoard)
+    var minesNegsCount = 0
+    var className = 'cell'
 
-    for(var i=0; i<gLevel.SIZE; i++){
+    for(var i=0; i<gBoard.length; i++){
         strHTML += '<tr>'
-        for(var j=0; j<gLevel.SIZE; j++){
+        for(var j=0; j<gBoard[0].length; j++){
+            var tdId = `cellI-${i}-cellJ-${j}`
             if(gBoard[i][j].isMine === true){
-                strHTML += `<td class="cell">${BOMB}</td>`  
+                strHTML += `<td id ="${tdId}" 
+                onclick="onCellClicked(this,${i},${j})"
+                class="${className}">
+                <span class="hide">${BOMB}</span>
+                </td>`  
             }else{
-                strHTML += `<td class="cell">${''}</td>` 
+                minesNegsCount = setMinesNegsCount(i,j)
+                gBoard[i][j].minesAroundCount = minesNegsCount
+                strHTML += `<td id ="${tdId}" 
+                onclick="onCellClicked(this,${i},${j})"
+                class="${className}">
+                <span class="hide">${minesNegsCount}</span>
+                </td>` 
+                
             }
         }
         strHTML +='</tr>'
     }
     var elBoard = document.querySelector('.board')
     elBoard.innerHTML = strHTML
+
+}
+
+function onCellClicked(elCell,cellI,cellJ){
+    // console.log('elCell:',elCell)
+    console.log('clicked on cell, i:',cellI,'j:',cellJ)
+    const elSpan = elCell.querySelector('span')
+    // console.log('elSpan:',elSpan)
+    elSpan.classList.remove('hide')
+    elCell.classList.add('clicked')
+    gGame.revealedCount ++
+    checkForBomb(elCell)
+}
+
+function onCellMarked(elCell, cellI,cellJ){
+    console.log('elCell:',elCell)
+    elCell.innerText = FLAG
+}
+
+function checkForBomb(elCell){
+    const elSpan = elCell.querySelector('span')
+    // console.log('elSpan:',elSpan)
+
 }
