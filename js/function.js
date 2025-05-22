@@ -2,13 +2,16 @@
 
 'use strict'
 
+var gStartTime
+var gTimerInterval
 
 function onChangeDifficulty(level, mines){
     gLevel.SIZE = level
     gLevel.MINES = mines
     console.log('mines on board:', gLevel.MINES)
-    gGame.isOn = true
+    // gGame.isOn = true
     onInit()
+    resetGame()
 }
 
 function createCell(){
@@ -23,21 +26,26 @@ function createCell(){
 
 function buildBoard() {
 	const board = []
-    var minesOnBoard = gLevel.MINES
-
+    const pos = []
+    var temp 
 
 	for (var i = 0; i < gLevel.SIZE; i++) {
 		board[i] = []
 
 		for (var j = 0; j < gLevel.SIZE; j++) {
 			board[i][j] = createCell()
-            if(minesOnBoard != 0){
-                board[i][j].isMine = (Math.random() > 0.5) ? true : false
-                minesOnBoard --
-            }
+            pos.push({i,j})
 		}
 	}
 
+    shuffle(pos)
+    console.log('pos:',pos)
+
+    for(i=0; i<gLevel.MINES; i++){
+        temp = pos.pop()
+        board[temp.i][temp.j].isMine = true
+    }
+        
     // board[2][1].isMine = true
     // board[0][2].isMine = true
     // board[3][2].isMine = true
@@ -57,8 +65,50 @@ function setMinesNegsCount(cellI, cellJ){
     return minesAroundCount
 }
 
-function getRandomInt(min, max) {
-	min = Math.ceil(min)
-	max = Math.floor(max)
-	return Math.floor(Math.random() * (max - min + 1) + min) 
+function startTimer(){
+    gStartTime = Date.now()
+
+    const elInfo = document.querySelector('.game-info')
+    var elTime = elInfo.querySelector('.time')
+
+    gTimerInterval = setInterval(() => {
+        var diff = (Date.now() - gStartTime) / 1000
+        elTime.innerText = 'Time:' + diff
+    }, 100)
+}
+
+function stopTimer(){
+    clearInterval(gTimerInterval)
+}
+
+function shuffle(nums) {
+    for (var i = nums.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1))
+        var temp = nums[i]
+        nums[i] = nums[j]
+        nums[j] = temp
+    }
+}
+
+function showVictoryMsg() {
+    var elBoard = document.querySelector('.board')
+    elBoard.innerHTML = `
+        <h2>🎉 You Won! 🎉</h2>
+        <button onclick="resetGame()">Start Over</button>
+    `
+}
+
+function showLostMsg() {
+    var elBoard = document.querySelector('.board')
+    elBoard.innerHTML = `
+        <h2>Oh No, You Lost, Try Again.</h2>
+        <button onclick="resetGame()">Start Over</button>
+    `
+}
+
+function resetGame(){
+    const elInfo = document.querySelector('.game-info')
+    var elTime = elInfo.querySelector('.time')
+    elTime.innerText = 'Time:' + 0.000
+    onInit()
 }

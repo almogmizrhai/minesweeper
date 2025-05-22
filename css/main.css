@@ -24,3 +24,7 @@ table{
 	margin: 100px auto;
 	border: 1px solid lightgray;
 }
+
+[onclick]{
+    cursor: pointer;
+}
