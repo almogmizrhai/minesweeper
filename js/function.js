@@ -5,11 +5,22 @@
 var gStartTime
 var gTimerInterval
 
+
+function onCustomMode(){
+    gLevel.SIZE = +prompt('Please enter the number of rows and columns you would like:')
+    gLevel.MINES = +prompt('Please enter the number of bombs on the board:')
+    console.log('mines on board:', gLevel.MINES)
+    // gGame.isOn = true
+    gCellCount = gLevel.SIZE * gLevel.SIZE
+    resetGame()
+}
+
 function onChangeDifficulty(level, mines){
     gLevel.SIZE = level
     gLevel.MINES = mines
     console.log('mines on board:', gLevel.MINES)
     // gGame.isOn = true
+    gCellCount = level * level
     onInit()
     resetGame()
 }
@@ -78,7 +89,12 @@ function startTimer(){
 }
 
 function stopTimer(){
+    const elInfo = document.querySelector('.game-info')
+    gTime = (Date.now() - gStartTime) / 1000
+    // console.log('gtime:', gTime)
+    gBestTimes.push(gTime)
     clearInterval(gTimerInterval)
+    updateScoreBoard()
 }
 
 function shuffle(nums) {
@@ -104,11 +120,4 @@ function showLostMsg() {
         <h2>Oh No, You Lost, Try Again.</h2>
         <button onclick="resetGame()">Start Over</button>
     `
-}
-
-function resetGame(){
-    const elInfo = document.querySelector('.game-info')
-    var elTime = elInfo.querySelector('.time')
-    elTime.innerText = 'Time:' + 0.000
-    onInit()
 }

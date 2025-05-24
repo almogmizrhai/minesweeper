@@ -18,22 +18,29 @@
                 Super Easy - test  
             </label>
             <label>
-                <input type="radio" class="level easy" name="difficulty" onclick="onChangeDifficulty(9 , 10)" />
+                <input type="radio" class="level easy" name="difficulty" onclick="onChangeDifficulty(4 , 4)" />
                 Easy
             </label>
             <label>
-                <input type="radio" class="level normal" name="difficulty" onclick="onChangeDifficulty(16 , 40)" />
+                <input type="radio" class="level normal" name="difficulty" onclick="onChangeDifficulty(8 , 14)" />
                 Normal
             </label>
             <label>
-                <input type="radio" class="level hard" name="difficulty" onclick="onChangeDifficulty(20, 90)" />
+                <input type="radio" class="level hard" name="difficulty" onclick="onChangeDifficulty(12, 32)" />
                 Hard!
             </label>
             <label>
-                <input type="radio" class="level extreme" name="difficulty" onclick="onChangeDifficulty(10 , 10)" />
+                <input type="radio" class="level extreme" name="difficulty" onclick="onCustomMode()" />
                 Extreme - custom!
             </label>
         </div>
+    </div>
+    <hr>
+    <div class="game-info">
+        <span class="game-face" onclick="starToPlay()">Let's Play</span>|
+        <span class="bomb"> Bomb on Board: </span> |
+        <span class="time">Time: 0.000</span> |
+        <span class="live">Live: 3</span>
     </div>
     <hr>
     <div>
@@ -43,11 +50,15 @@
         </table>
     </div>
     <hr>
-    <div class="game-info">
-        <span class="game-face" onclick="starToPlay()">Let's Play</span>|
-        <span class="bomb"> Bomb on Board: </span> |
-        <span class="time">Time: 0.000</span> |
-        <span class="live">Live: 3</span>
+    <div class="hint" onclick="useHint()">
+        <p> you have 3 hints: 🕯 🕯 🕯 </p>
+    </div>
+    <hr>
+    <div>
+        <h4>Top 5 Times:</h4>
+        <div class="top-5-score">
+
+        </div>
     </div>
     <hr>
     <script src="js/main.js"></script>
