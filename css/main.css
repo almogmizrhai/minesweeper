@@ -1,6 +1,7 @@
 body{
     background-color: antiquewhite;
     text-align: center;
+    font-family: "Papyrus" , Papyrus, Fantasy;
 }
 
 .cell{
@@ -23,6 +24,65 @@ body{
 table{
 	margin: 100px auto;
 	border: 1px solid lightgray;
+}
+
+table.hint, table.live{
+    border: 1px solid black;
+    transition: 1s;
+    display: inline-block;
+    margin: 10px;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+table.info{
+    transition: 1s;
+    display: inline-block;
+    margin: 10px;
+    border-collapse: collapse;
+}
+
+table.hint td,table.live td , table.info td{
+    border: 1px solid black;
+    padding: 5px;
+}
+
+table.hint{ 
+    cursor: pointer;
+    background-color: lightyellow;
+}
+
+.inUse{ 
+    background-color: yellow;
+}
+
+table.live{
+	background-color: lightpink; 
+}
+
+button.mega-hint{
+    background-color: lemonchiffon;
+    color: black;
+}
+
+button.safe-click{
+    background-color: lightgreen;
+    color: black;
+}
+
+button.exterminator{
+    background-color: lightsalmon;
+    color: black;
+}
+
+button.undo{
+    background-color: lightpink;
+    color: black;
+}
+
+button.dark-mode{
+    background-color: #555555;
+    color: white;
 }
 
 [onclick]{

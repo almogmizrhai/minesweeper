@@ -29,7 +29,9 @@ const BOMB = '💣'
 const GAME_FACE = '🤔'
 const DEAD_FACE = '💀'
 const HAPPY_FACE = '🥳'
-const HINT = '🕯️'
+const HINT = '🔎'
+const HEART = '❤️'
+const BROKEN_HEART = '💔'
 var gHint = 3
 var gBoard
 var gTime 
@@ -81,7 +83,7 @@ function renderBoard(){
 function isFirstClick(){
     for(var i=0; i<gBoard.length; i++){
         for(var j=0; j<gBoard[0].length; j++){
-
+            if(gBoard[i][j].isRevealed || gBoard[i][j].isMarked) return
         }
     }
 }
@@ -111,10 +113,9 @@ function useHint(){
     gGame.gHintMode = true
     gHint--
     const elHint = document.querySelector('.hint')
-    if(gHint === 3) elHint.innerHTML = `you have ${gHint} hints: 🕯 🕯 ${HINT} `
-    if(gHint === 2) elHint.innerHTML = `you have ${gHint} hints: 🕯 ${HINT} `
-    if(gHint === 1) elHint.innerHTML = `you have ${gHint} hints: ${HINT} `
-    if(gHint === 0) elHint.innerHTML = `you don't have any more hints.`
+    if(gHint === 2) elHint.innerHTML = `<td> 🔎 </td> <td> 🔎 </td> <td class = "inUse"> 🔎 </td>  `
+    if(gHint === 1) elHint.innerHTML = `<td> 🔎 </td><td class = "inUse"> 🔎 </td> <td class = "inUse"> 🔎 </td>`
+    if(gHint === 0) elHint.innerHTML = `<td class = "inUse"> 🔎 </td><td class = "inUse"> 🔎 </td> <td class = "inUse"> 🔎 </td>`
 }
 
 function revealCell(elCell, cellI, cellJ) {
@@ -204,9 +205,10 @@ function checkVictory(){
 function checkLost(elInfo){
     console.log('you lost a live')
     gGame.live--
-    const elLive = elInfo.querySelector('.live')
-    var liveMsg = 'Live:' + gGame.live
-    elLive.innerText = liveMsg
+    const elLive = document.querySelector('.live')
+    if(gGame.live ===2) elLive.innerHTML = `<td> ${HEART} </td> <td> ${HEART} </td><td> ${BROKEN_HEART} </td>`
+    if(gGame.live ===1) elLive.innerHTML = `<td> ${HEART} </td> <td> ${BROKEN_HEART} </td><td> ${BROKEN_HEART} </td>`
+    if(gGame.live ===0) elLive.innerHTML = `<td> ${BROKEN_HEART} </td> <td> ${BROKEN_HEART} </td><td> ${BROKEN_HEART} </td>`
     var elFace = elInfo.querySelector('.game-face')
     elFace.innerText = DEAD_FACE
     setTimeout(() => {
@@ -225,8 +227,8 @@ function resetGame(){
     var elTime = elInfo.querySelector('.time')
     elTime.innerText = 'Time:' + 0.000
     gGame.live = 3
-    const elLive = elInfo.querySelector('.live')
-    var liveMsg = 'Live:' + gGame.live
+    const elLive = document.querySelector('.live')
+    var liveMsg =  `<td> ${HEART} </td> <td> ${HEART} </td><td> ${HEART} </td>`
     elLive.innerText = liveMsg
     onInit()
     gGame = { 
@@ -264,4 +266,29 @@ function updateScoreBoard(){
     }
     strHTML += '</ol>'
     elScoreBoard.innerHTML = strHTML
+}
+
+function useMegaHint(){
+    if(!gGame.isOn) return
+    console.log('use Mega Hint')
+}
+
+function safeClick(){
+    if(!gGame.isOn) return
+    console.log('safe Click')
+}
+
+function Exterminator(){
+    if(!gGame.isOn) return
+    console.log('Exterminator')
+}
+
+function undo(){
+    if(!gGame.isOn) return
+    console.log('undo')
+}
+
+function darkMode(){
+    if(!gGame.isOn) return
+    console.log('dark Mode')
 }

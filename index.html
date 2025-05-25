@@ -13,10 +13,10 @@
         <div>
             <p>Chose Your Level:</p>
             <!--* Radio Inputs -->
-            <label>
+            <!-- <label>
                 <input type="radio" class="level super-easy" name="difficulty" onclick="onChangeDifficulty(4 , 4)" />
                 Super Easy - test  
-            </label>
+            </label> -->
             <label>
                 <input type="radio" class="level easy" name="difficulty" onclick="onChangeDifficulty(4 , 4)" />
                 Easy
@@ -37,21 +37,40 @@
     </div>
     <hr>
     <div class="game-info">
-        <span class="game-face" onclick="starToPlay()">Let's Play</span>|
-        <span class="bomb"> Bomb on Board: </span> |
+        <span class="game-face" onclick="starToPlay()">Let's Play</span>
+        <hr>
+        <table class="info">
+            <td class="bomb"> Bomb on Board: </td> 
+            <td class="time">Time: 0.000</td> 
+        </table>
+        <!-- <span class="bomb"> Bomb on Board: </span> |
         <span class="time">Time: 0.000</span> |
-        <span class="live">Live: 3</span>
+        <span class="live">Live: 3</span> -->
     </div>
     <hr>
     <div>
+
         <table>
             <tbody class="board">
             </tbody>
         </table>
     </div>
     <hr>
-    <div class="hint" onclick="useHint()">
-        <p> you have 3 hints: 🕯 🕯 🕯 </p>
+    <table class="hint" onclick="useHint()">
+        <td> 🔎 </td> <td> 🔎 </td><td> 🔎 </td>
+    </table>
+    <table class="live">
+        <tr>
+             <td> ❤️ </td> <td> ❤️ </td><td> ❤️ </td>
+        </tr>
+    </table>
+    <hr>
+    <div class="btns">
+        <button class="mega-hint" onclick="useMegaHint()">Mega Hint</button>
+        <button class="safe-click" onclick="safeClick()">Safe Click</button>
+        <button class="exterminator" onclick="Exterminator()">Exterminator</button>
+        <button class="undo" onclick="undo()">Undo</button>
+        <button class="dark-mode" onclick="darkMode()">Dark Mode</button>
     </div>
     <hr>
     <div>
