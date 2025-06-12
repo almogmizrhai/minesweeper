@@ -1,16 +1,24 @@
 body{
     background-color: antiquewhite;
     text-align: center;
-    font-family: "Papyrus" , Papyrus, Fantasy;
+    font-family: "Papyrus", Papyrus, Fantasy;
+    margin: 0;
+    padding: 20px;
 }
 
 .cell{
     background-color: gray;
     width: 40px;
-	height: 40px;
-	font-size: 1.5em;
-    border-color: black;
-    transition: 1s;
+    height: 40px;
+    font-size: 1.2em;
+    border: 2px solid black;
+    transition: 0.3s;
+    cursor: pointer;
+    /* user-select: none; */
+}
+
+.cell:hover{
+    background-color: #a0a0a0;
 }
 
 .clicked{
@@ -22,29 +30,27 @@ body{
 }
 
 table{
-	margin: 100px auto;
-	border: 1px solid lightgray;
+    margin: 20px auto;
+    border-collapse: collapse;
 }
 
 table.hint, table.live{
     border: 1px solid black;
-    transition: 1s;
+    transition: 0.3s;
     display: inline-block;
     margin: 10px;
-    border-collapse: collapse;
-    border: 1px solid black;
 }
 
 table.info{
-    transition: 1s;
+    transition: 0.3s;
     display: inline-block;
     margin: 10px;
     border-collapse: collapse;
 }
 
-table.hint td,table.live td , table.info td{
+table.hint td, table.live td, table.info td{
     border: 1px solid black;
-    padding: 5px;
+    padding: 8px;
 }
 
 table.hint{ 
@@ -54,10 +60,29 @@ table.hint{
 
 .inUse{ 
     background-color: yellow;
+    opacity: 0.5;
 }
 
 table.live{
-	background-color: lightpink; 
+    background-color: lightpink; 
+}
+
+.btns{
+    margin: 20px 0;
+}
+
+.btns button{
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btns button:hover{
+    transform: 1s;
 }
 
 button.mega-hint{
@@ -65,6 +90,7 @@ button.mega-hint{
     color: black;
 }
 
+        
 button.safe-click{
     background-color: lightgreen;
     color: black;
@@ -85,6 +111,59 @@ button.dark-mode{
     color: white;
 }
 
-[onclick]{
+.game-face{
+    font-size: 2em;
     cursor: pointer;
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.difficulty-section{
+    margin: 20px 0;
+}
+
+label{
+    display: inline-block;
+    margin: 5px 10px;
+    cursor: pointer;
+}
+
+.mine-number{
+    color: #0000FF;
+}
+.mine-number-2{
+    color: #008000;
+}
+.mine-number-3{
+    color: #FF0000;
+}
+.mine-number-4{
+    color: #800080;
+}
+.mine-number-5{
+    color: #800000;
+}
+.mine-number-6{
+    color: #008080;
+}
+.mine-number-7{
+    color: #000000;
+}
+.mine-number-8{
+    color: #808080;
+}
+
+.dark-mode-active{
+    background-color: #333;
+    color: white;
+}
+
+.dark-mode-active .cell{
+    background-color: #555;
+    border-color: #888;
+}
+
+.dark-mode-active .clicked{
+    background-color: #777;
 }

@@ -6,7 +6,7 @@
     <title>Mine Sweeper</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body >
+<body onload="onChangeDifficulty(4,4)">
     <div>
         <h1>Mine Sweeper</h1>
         <hr>
@@ -36,6 +36,7 @@
         </div>
     </div>
     <hr>
+
     <div class="game-info">
         <span class="game-face" onclick="starToPlay()">Let's Play</span>
         <hr>
@@ -43,9 +44,6 @@
             <td class="bomb"> Bomb on Board: </td> 
             <td class="time">Time: 0.000</td> 
         </table>
-        <!-- <span class="bomb"> Bomb on Board: </span> |
-        <span class="time">Time: 0.000</span> |
-        <span class="live">Live: 3</span> -->
     </div>
     <hr>
     <div>
@@ -57,11 +55,15 @@
     </div>
     <hr>
     <table class="hint" onclick="useHint()">
-        <td> 🔎 </td> <td> 🔎 </td><td> 🔎 </td>
+        <td> 🔎 </td> 
+        <td> 🔎 </td>
+        <td> 🔎 </td>
     </table>
     <table class="live">
         <tr>
-             <td> ❤️ </td> <td> ❤️ </td><td> ❤️ </td>
+            <td> ❤️ </td> 
+            <td> ❤️ </td>
+            <td> ❤️ </td>
         </tr>
     </table>
     <hr>
@@ -76,7 +78,13 @@
     <div>
         <h4>Top 5 Times:</h4>
         <div class="top-5-score">
-
+            <ol>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
         </div>
     </div>
     <hr>
